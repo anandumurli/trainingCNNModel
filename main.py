@@ -7,11 +7,11 @@ from keras.api.models import Sequential
 from keras.api.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 
 dataset_path = 'dataset'
-emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral']
+emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral'] #sepcifying which emotion folders to access
 data = []
 labels = []
 
-
+# function to add data into the data and lables list
 def load_images_from_folder(folder, label):
     for filename in os.listdir(folder):
         img_path = os.path.join(folder, filename)
@@ -22,12 +22,12 @@ def load_images_from_folder(folder, label):
                 labels.append(label)
 
 
-for idx, emotion in enumerate(emotions):
+for idx, emotion in enumerate(emotions): #loop through the emotions for the train folder
     train_folder = os.path.join(dataset_path, 'train', emotion)
     load_images_from_folder(train_folder, idx)
 
 
-for idx, emotion in enumerate(emotions):
+for idx, emotion in enumerate(emotions): #loop through the emotions for the test folder
     test_folder = os.path.join(dataset_path, 'test', emotion)
     load_images_from_folder(test_folder, idx)
 
